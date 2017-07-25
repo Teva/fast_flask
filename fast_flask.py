@@ -18,6 +18,11 @@ files_var = ["index.html","layout.html","login.html"]
 static_files = ["styles.css"]
 
 def init_file(directory):
+    """Creates the __init__.py file & adds the necessary variables :
+    
+    from flask import Flask
+    from app import views
+    """
     file = open(directory+'/'+'__init__.py','w')
     file.write('from flask import Flask\n')
     file.write('app = Flask(__name__)\n')
@@ -25,12 +30,25 @@ def init_file(directory):
     file.close()
 
 def run_file(directory):
+    """Creates the run.py file & adds the necessary variables :
+    
+    from app import app
+    app.run(debug=True)
+    """
     file = open(directory+'/'+'run.py','w')
     file.write('from app import app \n')
     file.write('app.run(debug=True) \n')
     file.close()
 
 def views_file(directory):
+    """Creates the views.py file & adds the necessary variables :
+    
+    from app import app
+    @app.route("/")
+    @app.route("/index")
+    def index():
+        return "Hello, World!
+    """
     file = open(directory+'/'+'views.py','w')
     file.write('from app import app \n')
     file.write('@app.route("/") \n')
@@ -40,9 +58,12 @@ def views_file(directory):
     file.close()
 
 def create_file(directory,filename):
+    """This function will be used to create directory tree and the static html files
+    """    
     file = open(directory+'/'+filename,'w')
     file.close()
 
+#Execution starts here
 for elm in dir_elm:
     if not os.path.exists(elm):
         os.makedirs(elm)
@@ -60,12 +81,9 @@ for elm in dir_elm:
         for val in files_var:
             create_file(elm, val)
 
-
-os.system("chmod a+x "+parent+'/'+"run.py")
+#Command line access to run the current python file and access it via the localhost
 os.system("python "+parent+'/'+"run.py")
 new = 2
 url = "http://127.0.0.1:5000"
 webbrowser.open(url, new=new)
 
-
-# /Volumes/Transcend/Test/
