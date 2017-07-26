@@ -83,7 +83,7 @@ for elm in dir_elm:
 
 #Command line access to run the current python file and access it via the localhost
 os.system("python "+parent+'/'+"run.py")
+os.system("pip install flask")
 new = 2
 url = "http://127.0.0.1:5000"
 webbrowser.open(url, new=new)
-
