@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+# authors : Teva DELAR, Emmario DELAR
 
 import os, webbrowser
 
@@ -82,6 +83,8 @@ for elm in dir_elm:
             create_file(elm, val)
 
 #Command line access to run the current python file and access it via the localhost
+os.system("chmod -R 777 "+dir_elm[0])
+os.system("chown -R $USERNAME:$USERNAME "+dir_elm[0])
 os.system("python "+parent+'/'+"run.py")
 os.system("pip install flask")
 new = 2
