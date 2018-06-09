@@ -6,7 +6,15 @@ import os, webbrowser
 
 
 #Directory to be created
-parent = raw_input("where do you want to have you flask application installed : ")
+parent = None
+try:
+    parent = raw_input("where do you want to have you flask application installed : ")
+    reponse = raw_input(' What name would you give to your app : ')
+except:
+    parent = input('where do you want to have you flask application installed : ')
+    reponse = input(' What name would you give to your app : ')
+parent+= reponse if parent[-1] == '/' else '/' + reponse
+
 child = parent+"/"+"app"
 child0_1 = child+"/"+"static"
 child0_2 = child+"/"+"templates"
